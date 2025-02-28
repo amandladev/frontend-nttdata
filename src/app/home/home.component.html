@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header bg-dark text-white">
+        <h3 class="mb-0">Technical Test</h3>
+      </div>
+      <div class="card-body">
+        <p>
+            Este proyecto es un test técnico para demostrar el desarrollo de un sistema simple utilizando
+          <strong>Angular</strong> para el frontend y <strong>Node.js + Express + Fastify + MongoDB</strong> para el backend.
+        </p>
+  
+        <h5 class="mt-4">Arquitectura Backend</h5>
+
+        <div class="text-center my-3">
+          <img src="backend-architecture.png" alt="Backend Architecture Diagram" class="img-fluid" style="max-height: 300px;">
+        </div>
+  
+        <h5 class="mt-4">Frontend Features</h5>
+        <p>
+          El frontend implementa 3 páginas principales:
+        </p>
+  
+        <div class="list-group">
+          <div class="list-group-item">
+            <strong>Inicio de sesión</strong>
+            <p class="mb-0">
+            Permite a los usuarios registrados autenticarse utilizando su correo electrónico y contraseña. Después de un inicio de sesión exitoso, se almacena un token JWT y se utiliza para acceder a rutas protegidas.
+            </p>
+          </div>
+          <div class="list-group-item">
+            <strong>Registro de usuarios</strong>
+            <p class="mb-0">
+                Permite a los usuarios registrarse proporcionando su nombre completo, correo electrónico, contraseña y número de teléfono. Se aplican reglas de validación para garantizar la calidad de los datos.
+            </p>
+          </div>
+          <div class="list-group-item">
+            <strong>Lista de usuarios (Protegida)</strong>
+            <p class="mb-0">
+              Muestra una tabla con todos los usuarios registrados. Esta página está protegida, lo que significa que solo los usuarios autenticados pueden acceder a ella.
+            </p>
+          </div>
+        </div>
+
+        <h5 class="mt-4">Tech Stack</h5>
+        <ul>
+          <li><strong>Frontend:</strong> Angular 18+, Bootstrap 5.</li>
+          <li><strong>Backend:</strong> Node.js, Express.js, Fastify, MongoDB and AWS.</li>
+          <li><strong>Authentication:</strong> JWT.</li>
+        </ul>
+  
+        <div class="mt-4 list-group">
+            <button class="btn btn-primary me-2 list-group-item" (click)="navigateTo('/login')">Ir al Login</button>
+            <button class="btn btn-success me-2 list-group-item" (click)="navigateTo('/register')">Registra un usuario</button>
+            <button class="btn btn-outline-secondary me-2 list-group-item" (click)="navigateTo('/users')">Usuarios (Protegida)</button>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  

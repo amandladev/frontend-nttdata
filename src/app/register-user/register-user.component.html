@@ -1,0 +1,140 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-sm" style="width: 500px;">
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">User Registration</h3>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+        <!-- Full Name -->
+        <div class="mb-3">
+          <label for="fullName" class="form-label">Full Name</label>
+          <input 
+            type="text" 
+            id="fullName" 
+            formControlName="fullName" 
+            class="form-control"
+            [class.is-invalid]="submitted && f['fullName'].errors"
+          />
+          @if (submitted && f['fullName'].errors) {
+            <div class="invalid-feedback">
+              @if (f['fullName'].errors['required']) {
+                <div>Name is required.</div>
+              }
+              @if (f['fullName'].errors['minlength']) {
+                <div>Name must be at least 2 characters.</div>
+              }
+              @if (f['fullName'].errors['maxlength']) {
+                <div>Name cannot exceed 50 characters.</div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email" 
+            class="form-control"
+            [class.is-invalid]="submitted && f['email'].errors"
+          />
+          @if (submitted && f['email'].errors) {
+            <div class="invalid-feedback">
+              @if (f['email'].errors['required']) {
+                <div>Email is required.</div>
+              }
+              @if (f['email'].errors['email']) {
+                <div>Please enter a valid email address.</div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            formControlName="password" 
+            class="form-control"
+            [class.is-invalid]="submitted && f['password'].errors"
+          />
+          @if (submitted && f['password'].errors) {
+            <div class="invalid-feedback">
+              @if (f['password'].errors['required']) {
+                <div>Password is required.</div>
+              }
+              @if (f['password'].errors['minlength']) {
+                <div>Password must be at least 8 characters.</div>
+              }
+              @if (f['password'].errors['pattern']) {
+                <div>Password must contain at least one uppercase letter, one lowercase letter, one number and one special character.</div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            class="form-control"
+            [class.is-invalid]="submitted && f['confirmPassword'].errors"
+          />
+          @if (submitted && f['confirmPassword'].errors) {
+            <div class="invalid-feedback">
+              @if (f['confirmPassword'].errors['required']) {
+                <div>Please confirm your password.</div>
+              }
+              @if (f['confirmPassword'].errors['passwordMismatch']) {
+                <div>Passwords do not match.</div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-4">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            formControlName="phone" 
+            class="form-control"
+            [class.is-invalid]="submitted && f['phone'].errors"
+          />
+          @if (submitted && f['phone'].errors) {
+            <div class="invalid-feedback">
+              @if (f['phone'].errors['required']) {
+                <div>Phone number is required.</div>
+              }
+              @if (f['phone'].errors['pattern']) {
+                <div>Please enter a valid phone number (9-15 digits).</div>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Register</button>
+        </div>
+
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <p class="mb-2">Already have an account?</p>
+      <button class="btn btn-outline-primary btn-sm" (click)="redirectToLogin()">
+        Login here
+      </button>
+    </div>
+
+  </div>
+</div>
