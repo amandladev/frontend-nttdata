@@ -8,10 +8,11 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { UserService } from './../services/user.service';
 import { EncryptService } from './../services/encrypt.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -29,6 +30,7 @@ export class RegisterUserComponent implements OnInit {
     private userService: UserService,
     private encryptService: EncryptService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -62,7 +64,7 @@ export class RegisterUserComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.pattern(/^[0-9]{9,15}$/), // Between 9 and 15 digits
+            Validators.pattern(/^[0-9]{9,10}$/), 
           ],
         ],
       },
@@ -105,8 +107,12 @@ export class RegisterUserComponent implements OnInit {
     };
 
     this.userService.register(userData).subscribe({
-      next: (response) => {},
+      next: (response) => {
+        this.toastr.success('Registration successful', 'Success');
+        this.router.navigate(['/login']);
+      },
       error: (error) => {
+        this.toastr.error('Registration failed', 'Error');
         console.error('Registration failed', error);
         // Handle error - show appropriate error messages
       },
